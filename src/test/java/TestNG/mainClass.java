@@ -16,13 +16,13 @@ import basicMethods.methods;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 public class mainClass {
-	
+	WebDriver driver = new ChromeDriver();
+	methods method = new methods(driver);
+	JavascriptExecutor  javaScript = (JavascriptExecutor) driver;
+	String value;
 	@BeforeTest
 	public void startBrowser() {
-		WebDriver driver = new ChromeDriver();
-		methods method = new methods(driver);
-		JavascriptExecutor  javaScript = (JavascriptExecutor) driver;
-		String value;
+		
 		WebDriverManager.chromedriver().setup();
 		driver.manage().window().maximize();
 		
