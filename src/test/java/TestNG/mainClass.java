@@ -23,19 +23,16 @@ public class mainClass {
 	
 	@BeforeTest
 	public void startBrowser() {
-		
+		WebDriverManager.chromedriver().setup();
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 	}
 	@Test
 	@Parameters({"username","password"})
 	public void TestGoogle(String username, String password) throws Exception {
-		WebDriverManager.chromedriver().setup();
-		driver.manage().window().maximize();
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		method.clickElement("Book Store Application");
-		method.clickElement("Login");
 		method.setValueByID("userName", username);
 		method.setValueByID("password", password);
-		method.clickButtonById("login");
+		method.clickButton();
 	}
 	@AfterTest
 	public void quiteBrowser() {
